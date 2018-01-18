@@ -1,0 +1,120 @@
+//first view
+using System;//from c# library
+namespace LAC_ConsoleApplication //name of project
+{
+    public class Student //using struct of create student information
+    {
+        public int ID;       //pay attention on the different between on public and private.
+        public string firstname, lastname;
+    }
+    public class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            string Input;
+            Console.WriteLine("\n Enter student ID: ");
+            Input = Console.ReadLine();                //remember to convert the first variable
+            ID = Convert.ToInt32(Input);
+            Console.WriteLine("\n Enter student Firstname: ");
+            firstname = Console.ReadLine();
+            Console.WriteLine("\n Enter student Lastname: ");
+            lastname = Console.ReadLine();
+            Console.WriteLine("\nStudent ID: " + aStudent.ID + "\nFirstname: "
+             + aStudent.firstname + "\nLastname: " + aStudent.lastname +);
+            Console.ReadKey();
+
+        }
+    }
+}
+//second view
+using System;//from c# library
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace LAC_ConsoleApplication //name of project
+{
+    public class Student //using struct of create student information
+    {
+        private int ID;   //pay attention on the different between on public and private.
+        public int id    //To give the permission on using ID only and had to use different letter to avoid the error already existed.
+        {
+            get  //read ID
+            {
+                return id;
+            }
+            set  //write ID
+            {
+                id = value;
+            }
+        }
+        private string firstname, lastname; //private means block the value（the local value became the global value），so the main 
+        function cannot use it.
+
+    }
+    public class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            string Input;
+            Student aStudent = new Student(); //The same way to use struct
+            Console.WriteLine("\n Enter student ID: ");
+            Input = Console.ReadLine();
+            aStudent.id = Convert.ToInt32(Input); //notice ！！
+            Console.WriteLine("\n Enter student Firstname: ");
+            aStudent.firstname = Console.ReadLine();
+            Console.WriteLine("\n Enter student Lastname: ");
+            aStudent.lastname = Console.ReadLine();
+            Console.WriteLine("\nStudent ID: " + aStudent.ID +"\nFirstname: "
+            + aStudent.firstname + "\nLastname: " + aStudent.lastname +);
+            Console.ReadKey();
+        }
+    }
+}
+//third view
+using System;//from c# library
+using System;//from c# library
+using System.Collections.Generic;//
+using System.Linq;//
+using System.Text;//
+using System.Threading.Tasks;//
+namespace LAC_ConsoleApplication //name of project
+{
+    public class Student //using struct of create student information
+    {
+        private int ID;   //pay attention on the different between on public and private.
+        //To give the permission on using ID only and had to use different letter to avoid the error already existed. 
+         public int Getid() //read the value
+        {
+            return this.ID;     //return the value of ID
+        }
+        public void Setid(int ID) //write the value of ID
+        {
+            this.ID = ID;        
+        }
+        private string firstname, lastname;//private means block the value（the local value became the global value），so the main 
+        function cannot use it.
+
+    }
+    public class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            string Input;
+            Student aStudent = new Student(); //The same way to use struct
+            Console.WriteLine("\n Enter student ID: ");
+            Input = Console.ReadLine();
+            aStudent.Setid( System.Convert.ToInt32(input)); //notice ！！the link of struct also will be changed
+            //Console.WriteLine("\n Enter student Firstname: ");
+            //aStudent.firstname = Console.ReadLine();
+            //Console.WriteLine("\n Enter student Lastname: ");
+            //aStudent.lastname = Console.ReadLine();
+            Console.WriteLine("\nStudent ID: " + aStudent.Setid +）；
+            //"\nFirstname: " + aStudent.firstname + "\nLastname: " + aStudent.lastname +);
+            Console.ReadKey();
+        }
+    }
+}
