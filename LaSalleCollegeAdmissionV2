@@ -67,7 +67,7 @@ namespace LaSalleCollegeAdmissionV2
       
             int MAX=2;
             student[] myStudentList = new student[MAX];
-            student std1;
+            student std1= new student();
             std1.Id = 100;
             std1.Fn = "jojo";
             std1.Ln = "leo";
