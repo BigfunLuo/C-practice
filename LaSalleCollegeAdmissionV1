@@ -1,0 +1,71 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LaSalleCollegeAdmissionV1
+{
+
+    //1-STRUCTR DATA TYPE
+    struct student
+    {
+       public int id;
+       public  string fn, ln;
+       public string GetStudInfos()
+        {
+            string Output;
+            Output = "Student ID: " + id + "\nFirstname: " + fn + "\nLastname: " + ln + "\n";
+            return Output;
+        }
+
+    }
+    //2- CLASS DATA TYPE;(CLASS PROGRAM)
+    class Program
+    {
+        
+        static void Main(string[] args)
+        {
+            //student aStudent=new student();
+            //string Input;
+            //Console.WriteLine("Enter your student ID: ");
+            //Input=Console.ReadLine();
+            // = Convert.ToInt32(Input);
+            //Console.WriteLine("Enter your firstname: ");
+            //fn = Console.ReadLine();
+            //Console.WriteLine("Enter your lastname: ");
+            //ln = Console.ReadLine();
+            //Console.WriteLine("Student ID: " + id + "\nFirstname: " + fn + "\nLastname: " + ln );
+            //Console.ReadKey();
+
+            //const int MAX = 2;
+            int MAX;
+            Console.WriteLine("\n MAX:");
+            MAX = Convert.ToInt32(Console.ReadLine());
+            student[] myStudentList = new student[MAX];
+            student s1;
+            s1.id = 100;
+            s1.fn = "sylia";
+            s1.ln = "houmel";
+            student s2;
+            s2.id = 101;
+            s2.fn = "samia";
+            s2.ln = "birme";
+
+            myStudentList[0] = s1;
+            myStudentList[1] = s2;
+            for(int i=0;i<myStudentList.Length;i++)
+            {
+
+                Console.WriteLine(myStudentList[i].GetStudInfos());
+
+
+
+
+
+            }
+
+            Console.ReadLine();
+        }
+    }
+}
