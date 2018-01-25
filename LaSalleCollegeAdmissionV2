@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LaSalleCollegeAdmissionV2
+{
+
+    //1-STRUCTR DATA TYPE
+   class student
+    {
+        private int id;
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        private string fn;
+        public string  Fn
+        {
+            get { return fn; }
+            set { fn = value; }
+        }
+        private string ln;
+        public string  Ln
+        {
+            get { return ln; }
+            set { ln = value; }
+        }
+        private string stime;
+        public string St
+        {
+            get { return stime; }
+            set { stime = value; }
+        }
+        public student()
+        {
+            this.id = 0;
+            this.ln ="unknown";
+            this.fn = "unknown";
+            this.stime= "unknown";
+        }
+        public student(int id,string fn,string ln,string stime)
+        {
+            this.id = id;
+            this.fn = fn;
+            this.ln = ln;
+            this.stime = stime;
+
+
+        }
+        public string GetStudentInfos()
+        {
+            string Output;
+            Output = "Student ID: " + id + "\nFirstname: " + fn + "\nLastname: " + ln +"\nStudy time: " +stime+ "\n";
+            return Output;
+        }
+
+    }
+    //2- CLASS DATA TYPE;(CLASS PROGRAM)
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+      
+            int MAX=2;
+            student[] myStudentList = new student[MAX];
+            student std1;
+            std1.Id = 100;
+            std1.Fn = "jojo";
+            std1.Ln = "leo";
+            std1.St = "Fulltime";
+            student std2=new student(101,"Lyly","Smith","Parttime");
+            myStudentList[0] = std1;
+            myStudentList[1] = std2;
+            for (int i = 0; i < myStudentList.Length; i++)
+            {
+
+                Console.WriteLine(myStudentList[i].GetStudentInfos());
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
