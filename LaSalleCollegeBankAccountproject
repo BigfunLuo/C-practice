@@ -1,0 +1,86 @@
+using System;
+
+
+namespace BankAccountproject
+{
+    class Date
+    {
+
+    }
+    class Account
+    {
+        private int accountNumber;
+        private double balance;
+        private string type;
+        private string category;
+        public void SetAccountNumber(int accountNumber)
+        {
+            this.accountNumber = accountNumber;
+        }
+        public int GetAccountNumber()
+        {
+            return this.accountNumber;
+        }
+        public void SetBalance(double balance)
+        {
+            this.balance = balance;
+        }
+        public double GetBalance()
+        {
+            return this.balance;
+        }
+        public void SetType(string type)
+        {
+            this.type = type; 
+        }
+        public string GetType()
+        {
+            return this.type;
+        }
+        public void SetCategory(string category)
+        {
+            this.category = category;
+        }
+        public string GetCategory()
+        {
+           
+            return this.category;
+        }
+           public Account()
+        {
+            this.accountNumber = 0000;
+            this.balance = 0.00;
+            this.category = "undefind";
+        }
+        public Account(int accountNumber,string category,double balance)
+        {
+            this.accountNumber = accountNumber;
+            this.category = category;
+            this.balance = balance;
+        }
+        public string GetAccountInfos()
+        {
+            string output;
+            output = "\n Account number,category,balance: "
+            +this.accountNumber + ","
+            + this.category + ","
+            + this.balance + "\n";
+            return output;
+        }
+
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Account account1=new Account();
+            account1.SetAccountNumber(100);
+            account1.SetCategory("Checking");
+            account1.SetBalance(10000.99);
+            Account account2 = new Account(101, "Saving", 700.75);
+            System.Console.WriteLine(account1.GetAccountInfos());
+            System.Console.WriteLine(account2.GetAccountInfos());
+            System.Console.ReadKey();
+        }
+    }
+}
