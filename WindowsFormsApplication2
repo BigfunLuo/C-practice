@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.//the beginning of 
+        /// </summary>
+        //[STAThread]
+        class Student
+        {//begin class Student
+            private int id;
+            private string fn;
+            private string ln;
+
+            public int Id
+            {
+                get
+                {
+                    return id;
+                }
+                set
+                {
+                    id = value;
+                }
+            }
+            public string Fn
+            {
+                get
+                {
+                    return fn;
+                }
+                set
+                {
+                    fn = value;
+                }
+            }
+            public string Ln
+            {
+                get
+                {
+                    return ln;
+                }
+                set
+                {
+                    ln = value;
+                }
+            }
+            //1-
+            public Student()
+            {
+                this.id = 0000;
+                this.fn = "unknown";
+                this.ln = "unknown";
+            }
+            public Student(int id, string fn, string ln)
+            {
+                this.id = id;
+                this.fn = fn;
+                this.ln = ln;
+            }
+            public string GetInfos()//notice:missing this part will lose your data
+            {
+                string output;
+                output = "id,fn,ln..." + this.id + "-" + this.fn + "-" + this.ln;
+                return output;
+
+            }
+        }//enf class Studnet 
+
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
+    }
+}
