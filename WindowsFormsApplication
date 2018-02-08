@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Student
+    {
+        private int id;
+        private string fn;
+        private string ln;
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
+        public string Fn
+        {
+            get
+            {
+                return fn;
+            }
+            set
+            {
+                fn = value;
+            }
+        }
+        public string Ln
+        {
+            get
+            {
+                return ln;
+            }
+            set
+            {
+                ln = value;
+            }
+        }
+        public Student()
+        {
+            this.id = 0000;
+            this.fn = "unknown";
+            this.ln = "unknown";
+        }
+        public Student(int id, string fn, string ln)
+        {
+            this.id = id;
+            this.fn = fn;
+            this.ln = ln;
+        }
+        public string GetInfos()//notice:missing this part will lose your data
+        {
+            string output;
+            output = "id,fn,ln..." + this.id + "-" + this.fn + "-" + this.ln;
+            return output;
+
+        }
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Student s1 = new Student();
+            string fn, ln;
+            int id;
+      
+            s1.Id = 100;
+            s1.Fn = "jo";
+            s1.Ln = "yuzhe";
+            Console.WriteLine(s1.GetInfos());
+            Student s2 = null; /*new Student(101, "lok", "666");*/
+            Console.WriteLine("id ?: ");
+            id = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("fn ?: ");
+            fn = Console.ReadLine();
+            Console.WriteLine("ln ?: ");
+            ln = Console.ReadLine();
+            
+            s2 = new Student(id, fn, ln);
+            Console.WriteLine(s2.GetInfos());
+            Console.ReadKey();
+        }
+        
+    }
+}
