@@ -1,0 +1,195 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
+{
+    class Account
+    {
+        private int accountno;
+        private string type;
+        private double balance;
+
+        public int Accountno
+        {
+            get
+            {
+                return accountno;
+            }
+
+            set
+            {
+                accountno = value;
+            }
+        }
+
+        public string Type
+        {
+            get
+            {
+                return type;
+            }
+
+            set
+            {
+                type = value;
+            }
+        }
+
+        public double Balance
+        {
+            get
+            {
+                return balance;
+            }
+
+            set
+            {
+                balance = value;
+            }
+        }
+        public Account()
+        {
+            //this.accountno = 0000;
+            //this.tpye = "unknown";
+            //this.balance = 0.0000;
+        }
+        public Account(int id, string type, double balance)
+        {
+            //this.accountno = accountno;
+            //this.tpye = tpye;
+            //this.balance = balance;
+            this.Accountno = accountno;  //Capital letter means store the data from set and get
+            this.Type = type;
+            this.Balance = balance;
+        }
+        public string GetInfos()
+        {
+            string output;
+            output =this.accountno
+                + "\t" + this.type
+                + "\t" + this.balance;
+            return output;
+        }
+
+
+    }
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+       
+       
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
+    }
+}
+
+-form.cs
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
+{
+ 
+    public partial class Form1 : Form
+    {
+        List<Account> myAccountlist = new List<Account>();//create gobal and a list
+        //Account anAccount;  //single value view
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        
+        private void buttonadd_Click(object sender, EventArgs e)
+        {
+
+            Account  anAccount = new Account();//initialzation & declaration
+            string input;
+            int accountno;string type;double balance;
+            //accountno=textboxno.Text
+            input = textboxno.Text;
+            accountno = Convert.ToInt32(input);
+            type = textBoxtype.Text;
+            input = textBoxbalance.Text;
+            balance = Convert.ToDouble(input);
+            anAccount.Accountno =accountno ;
+            anAccount.Type=type;
+            anAccount.Balance = balance;
+            this.myAccountlist.Add(anAccount);//add because the new list
+        }
+
+        private void buttondisplay_Click(object sender, EventArgs e)
+        {  //using the getter
+            //MessageBox.Show("Account no: " + anAccount.Accountno     //single value view use in textbox        
+            //    +"\n Account type: " +anAccount.Type
+            //    +"\n Account balance: " +anAccount.Balance);
+            if (this.myAccountlist.Capacity != 0)    //using on listbox
+            {
+                foreach (Account item in this.myAccountlist)
+                {
+                    this.listBoxAccount.Items.Add(item.GetInfos());
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Data.....");
+            }
+
+            
+        }
+
+        private void buttonreset_Click(object sender, EventArgs e)
+        {//using the setter
+            textboxno.Text = ""; 
+            textBoxtype.Text = "";
+            textBoxbalance.Text = "";
+
+            listBoxAccount.Items.Clear();
+            textBoxkey.Text = "";
+
+        }
+
+        private void buttonexit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonsearch_Click(object sender, EventArgs e)
+        {
+            bool found = false;
+            Account theAccount = new Account();
+            foreach (Account element in this.myAccountlist)
+            {
+                if(element.Accountno==Convert.ToInt32(textBoxkey.Text))
+                {
+                    found = true;
+                    theAccount = element;
+                }
+            }
+            if(found)
+            {
+                MessageBox.Show("...Account Found..."+theAccount.GetInfos());
+            }
+            else
+            {
+                MessageBox.Show("...Account Not Found...");
+            }
+        }
+    }
+}
